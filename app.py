@@ -5,8 +5,6 @@ from my_client import client
 import routes
 
 
-
-
 def register_routes(app: Flask):
     Bootstrap(app)
     app.register_blueprint(routes.bp)
@@ -14,7 +12,6 @@ def register_routes(app: Flask):
 
 def initialize_extensions(app):
     client.MyClient(app)
-    # my_in_client.init_app(app)
 
 
 def create_app():

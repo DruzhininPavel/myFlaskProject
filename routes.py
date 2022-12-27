@@ -1,8 +1,7 @@
 from logging import getLogger
 
-from flask import Blueprint, render_template
+from flask import Blueprint
 from flask import current_app
-# from app import my_in_client
 
 logger = getLogger(__name__)
 
@@ -16,9 +15,6 @@ bp = Blueprint(
 @bp.route('/', methods=['POST', 'GET'])
 def index():
     app = current_app._get_current_object()
-
-    # client = my_client.client.MyClient()
-
     resp = app.extensions['my_in_client'].get_status()
     headers = dict(resp.raw.headers)
     out = resp.content
@@ -26,5 +22,5 @@ def index():
 
 
 @bp.route('/about')
-def hello_world():  # put application's code here
+def hello_world():
     return 'Hello World!'
